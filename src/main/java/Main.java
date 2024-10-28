@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -17,36 +18,40 @@ public class Main {
         while (true) {
             System.out.println("\nOptions: [1] Index file, [2] Index directory, [3] Search word, [4] Exit");
             System.out.print("Choose an option: ");
+            try  {
+                int choice = scanner.nextInt();
+                scanner.nextLine();  // Consume newline
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter file path to index: ");
+                        String filePath = scanner.nextLine();
+                        indexer.indexFile(filePath);
+                        break;
 
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter file path to index: ");
-                    String filePath = scanner.nextLine();
-                    indexer.indexFile(filePath);
-                    break;
+                    case 2:
+                        System.out.print("Enter directory path to index: ");
+                        String dirPath = scanner.nextLine();
+                        indexer.indexDirectory(dirPath);
+                        break;
 
-                case 2:
-                    System.out.print("Enter directory path to index: ");
-                    String dirPath = scanner.nextLine();
-                    indexer.indexDirectory(dirPath);
-                    break;
+                    case 3:
+                        System.out.print("Enter word to search: ");
+                        String word = scanner.nextLine();
+                        indexer.query(word);
+                        break;
 
-                case 3:
-                    System.out.print("Enter word to search: ");
-                    String word = scanner.nextLine();
-                    indexer.query(word);
-                    break;
+                    case 4:
+                        System.out.println("Exiting.");
+                        scanner.close();
+                        return;
 
-                case 4:
-                    System.out.println("Exiting.");
-                    scanner.close();
-                    return;
-
-                default:
-                    System.out.println("Invalid option.");
+                    default:
+                        System.out.println("Invalid option. Please try again");
+                }
+            }catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number between 1 and 4 inclusive");
+                scanner.nextLine();
             }
         }
     }

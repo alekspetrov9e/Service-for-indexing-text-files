@@ -40,7 +40,7 @@ public class FileIndexer {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error reading directory " + dirPath + ": " + e.getMessage());
+            System.err.println("Error reading directory " + dirPath);
         }
     }
 
