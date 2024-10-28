@@ -13,7 +13,7 @@ Robust Unit Tests: Includes comprehensive tests to validate functionality, cover
 Setup and Installation
 Clone the Repository:
 
-git clone https://github.com/alekspetrov9e/FileIndexer.git
+git clone https://github.com/alekspetrov9e/Service-for-indexing-text-files
 cd FileIndexer
 
 Building:
