@@ -27,6 +27,17 @@ public class FileIndexer {
             System.err.println("Error reading file " + filePath + ": " + e.getMessage());
         }
     }
+    public void indexDirectory(String dirPath) {
+        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(dirPath))) {
+            for (Path path : directoryStream) {
+                if (Files.isRegularFile(path)) {
+                    indexFile(path.toString());
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading directory " + dirPath + ": " + e.getMessage());
+        }
+    }
 
 
 
