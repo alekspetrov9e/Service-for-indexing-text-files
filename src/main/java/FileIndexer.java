@@ -6,6 +6,10 @@ public class FileIndexer {
     private final Map<String, Set<String>> wordToFileMap = new HashMap<>();
 
 
+    public Map<String, Set<String>> getWordToFileMap() {
+        return wordToFileMap;
+    }
+
     public void indexFile(String filePath) {
         File file = new File(filePath);
         if (!file.exists() || !file.isFile()) {
