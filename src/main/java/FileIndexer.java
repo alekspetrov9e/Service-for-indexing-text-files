@@ -38,6 +38,15 @@ public class FileIndexer {
             System.err.println("Error reading directory " + dirPath + ": " + e.getMessage());
         }
     }
+    public void query(String word) {
+        Set<String> files = wordToFileMap.get(word.toLowerCase());
+        if (files == null || files.isEmpty()) {
+            System.out.println("No files found containing word: " + word);
+        } else {
+            System.out.println("Files containing '" + word + "':");
+            files.forEach(System.out::println);
+        }
+    }
 
 
 
